@@ -1,3 +1,2 @@
-module belajar-golang-goroutine
-
+module c
 go 1.18
