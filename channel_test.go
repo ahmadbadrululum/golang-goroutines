@@ -6,15 +6,16 @@ import (
 	"time"
 )
 
+func GiveMeResponse(channel chan string) {
+	time.Sleep(2 * time.Second)
+	channel <- "Eko Kurniawan Khannedy"
+}
+
 func TestCreateChannel(t *testing.T) {
 	channel := make(chan string)
 	defer close(channel)
 
-	go func() {
-		time.Sleep(2 * time.Second)
-		channel <- "Eko Kurniawan Khannedy"
-		fmt.Println("Selesai Mengirim Data ke Channel")
-	}()
+	go GiveMeResponse(channel)
 
 	data := <-channel
 	fmt.Println(data)
